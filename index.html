@@ -183,12 +183,13 @@ body {
           let exerciseCountdown = setInterval(function() {
               exerciseTime--;
               document.getElementById('timer-text').innerText = exerciseTime;
-              if (exerciseTime === 0) {
+              if (exerciseTime === -1) {
                   clearInterval(exerciseCountdown);
                   if (currentSet < numSets) {
                       rest();
                     } else {
                 alert("Workout Complete");
+                document.getElementById("progressFill").style.width = "0%";
                 mainPage.style.display = "block";
                 timerPage.style.display = "none";
             }
@@ -204,7 +205,7 @@ function rest() {
           let restCountdown = setInterval(function() {
               remainingRestDuration--;
             document.getElementById('timer-text').innerText = remainingRestDuration;
-            if (remainingRestDuration === 0) {
+            if (remainingRestDuration === -1) {
               clearInterval(restCountdown);
               currentSet++;
               countdown();
